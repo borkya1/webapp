@@ -5,21 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Canvas Web App with Login</title>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; frame-ancestors 'self' https://*.my.salesforce.com https://*.force.com;">
-    <script>
-        // Function to handle login
-        function handleLogin(event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            if (username === 'admin' && password === 'password') {
-                window.location.href = 'content.html';
-            } else {
-                alert('Invalid username or password');
-            }
-        }
-    </script>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; frame-ancestors https://*.salesforce.com https://*.force.com;">
+    <script src="login.js" defer></script>
 </head>
 <body>
     <div id="login-form">
@@ -34,4 +21,3 @@
     </div>
 </body>
 </html>
-
