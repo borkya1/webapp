@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Canvas Web App</title>
-    <!-- Add the CSP meta tag here -->
+    <title>Simple Canvas Web App with Login</title>
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; frame-ancestors 'self' https://*.my.salesforce.com https://*.force.com;">
     <script>
+        // Function to handle login
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === 'admin' && password === 'password') {
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('app-content').style.display = 'block';
+            } else {
+                alert('Invalid username or password');
+            }
+        }
+
         // Function to parse and log the signed request received from Salesforce
         function handleSignedRequest(signedRequest) {
             console.log("Signed Request from Salesforce: ", signedRequest);
@@ -25,15 +38,29 @@
     </script>
 </head>
 <body>
-    <h1>Welcome to the Simple Canvas Web App</h1>
-    <p>This is a simple web application used to test Salesforce Canvas integration.</p>
-    <p>If integrated correctly, Salesforce will pass a signed request to this page, which you can use to validate the connection.</p>
-    <div>
-        <strong>Instructions:</strong>
-        <ul>
-            <li>Embed this web app as a Canvas App in Salesforce.</li>
-            <li>Make sure to check the browser console to see the signed request passed from Salesforce.</li>
-        </ul>
+    <div id="login-form">
+        <h2>Login</h2>
+        <form onsubmit="handleLogin(event)">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div id="app-content" style="display: none;">
+        <h1>Welcome to the Simple Canvas Web App</h1>
+        <p>This is a simple web application used to test Salesforce Canvas integration.</p>
+        <p>If integrated correctly, Salesforce will pass a signed request to this page, which you can use to validate the connection.</p>
+        <div>
+            <strong>Instructions:</strong>
+            <ul>
+                <li>Embed this web app as a Canvas App in Salesforce.</li>
+                <li>Make sure to check the browser console to see the signed request passed from Salesforce.</li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>
+
