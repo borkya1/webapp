@@ -1,6 +1,16 @@
-/* login.js */
-
 console.log('Login script loaded');
+
+// Add an event listener to handle form submission
+window.onload = function() {
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', handleLogin);
+        console.log('Login form event listener added');
+    } else {
+        console.log('Login form not found');
+    }
+}
+
 // Function to handle login
 function handleLogin(event) {
     console.log('Login button clicked');
