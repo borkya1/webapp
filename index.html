@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Canvas Web App with Login</title>
-    <script src="login.js" defer></script>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; frame-ancestors https://*.salesforce.com https://*.force.com;">
+    <script src="./login.js" defer></script> <!-- Add ./ to ensure proper loading -->
 </head>
 <body>
     <div id="login-form">
