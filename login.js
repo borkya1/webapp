@@ -1,3 +1,4 @@
+/* login.js */
 // Function to handle login
 function handleLogin(event) {
     event.preventDefault();
@@ -5,7 +6,6 @@ function handleLogin(event) {
     const password = document.getElementById('password').value;
     
     if (username === 'admin' && password === 'password') {
-        // Use window.location.pathname to build the correct URL for content.html
         window.location.href = window.location.origin + window.location.pathname.replace('index.html', 'content.html');
     } else {
         alert('Invalid username or password');
