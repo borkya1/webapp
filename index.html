@@ -13,8 +13,7 @@
             const password = document.getElementById('password').value;
             
             if (username === 'admin' && password === 'password') {
-                document.getElementById('login-form').style.display = 'none';
-                document.getElementById('app-content').style.display = 'block';
+                window.location.href = 'content.html';
             } else {
                 alert('Invalid username or password');
             }
@@ -48,8 +47,37 @@
             <button type="submit">Login</button>
         </form>
     </div>
+</body>
+</html>
 
-    <div id="app-content" style="display: none;">
+<!-- content.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Web App Content</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; frame-ancestors 'self' https://*.my.salesforce.com https://*.force.com;">
+    <script>
+        // Function to parse and log the signed request received from Salesforce
+        function handleSignedRequest(signedRequest) {
+            console.log("Signed Request from Salesforce: ", signedRequest);
+        }
+
+        // Function to extract signed request from URL and process it
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('signed_request')) {
+                const signedRequest = params.get('signed_request');
+                handleSignedRequest(signedRequest);
+            } else {
+                console.log("No signed request found in URL");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="app-content">
         <h1>Welcome to the Simple Canvas Web App</h1>
         <p>This is a simple web application used to test Salesforce Canvas integration.</p>
         <p>If integrated correctly, Salesforce will pass a signed request to this page, which you can use to validate the connection.</p>
@@ -63,4 +91,3 @@
     </div>
 </body>
 </html>
-
