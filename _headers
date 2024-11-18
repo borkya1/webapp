@@ -1,0 +1,2 @@
+/*
+  Content-Security-Policy: default-src 'self'; frame-ancestors https://*.salesforce.com https://*.force.com;
