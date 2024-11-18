@@ -12,4 +12,5 @@ function handleLogin(event) {
     } else {
         alert('Invalid username or password');
     }
+    console.log('Login script exited');
 }
