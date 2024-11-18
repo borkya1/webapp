@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Canvas Web App</title>
+    <!-- Add the CSP meta tag here -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; frame-ancestors 'self' https://*.my.salesforce.com https://*.force.com;">
+    <script>
+        // Function to parse and log the signed request received from Salesforce
+        function handleSignedRequest(signedRequest) {
+            console.log("Signed Request from Salesforce: ", signedRequest);
+        }
+
+        // Function to extract signed request from URL and process it
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('signed_request')) {
+                const signedRequest = params.get('signed_request');
+                handleSignedRequest(signedRequest);
+            } else {
+                console.log("No signed request found in URL");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to the Simple Canvas Web App</h1>
+    <p>This is a simple web application used to test Salesforce Canvas integration.</p>
+    <p>If integrated correctly, Salesforce will pass a signed request to this page, which you can use to validate the connection.</p>
+    <div>
+        <strong>Instructions:</strong>
+        <ul>
+            <li>Embed this web app as a Canvas App in Salesforce.</li>
+            <li>Make sure to check the browser console to see the signed request passed from Salesforce.</li>
+        </ul>
+    </div>
+</body>
+</html>
