@@ -1,4 +1,6 @@
 /* login.js */
+
+console.log('Login script loaded');
 // Function to handle login
 function handleLogin(event) {
     event.preventDefault();
